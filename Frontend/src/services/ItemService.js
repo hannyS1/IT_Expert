@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {BACKEND_ADDR} from "../environment";
 
-const BASE_URL = 'http://localhost:8000/api/items/';
+const BASE_URL = `${BACKEND_ADDR}api/items/`;
 
 export const getItems = async (filter) => {
 

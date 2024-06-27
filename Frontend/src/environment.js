@@ -1,0 +1,1 @@
+export const BACKEND_ADDR = process.env.BACKEND_ADDR ?? 'http://localhost:8000/';

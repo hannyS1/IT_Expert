@@ -1,6 +1,6 @@
 import './ItemList.css'
 import {useState} from "react";
-import {getItems} from "../services/ItemService";
+import {getItems} from "../../services/ItemService";
 
 export default function ItemList() {
     const [items, setItems] = useState([]);

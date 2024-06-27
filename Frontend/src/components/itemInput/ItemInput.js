@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './ItemInput.css';
-import {overwriteData} from "../services/ItemService";
+import {overwriteData} from "../../services/ItemService";
 
 export default function ItemInput() {
     const [items, setItems] = useState([{ code: '', value: '' }]);
