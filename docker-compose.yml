@@ -24,6 +24,7 @@
     build:
       context: Frontend
       dockerfile: DockerFile
+    env_file: Frontend/.env.example
     ports: 
       - "3000:3000"
     depends_on: 
