@@ -27,7 +27,7 @@ internal class ItemService : IItemService
         return _mapper.Map<IEnumerable<ItemResponseDto>>(itemEntities);
     }
 
-    public async Task FetchData(IEnumerable<Dictionary<int, string>> data)
+    public async Task OverwriteData(IEnumerable<Dictionary<int, string>> data)
     {
         if (data == null)
             throw new ArgumentNullException(nameof(data));
@@ -36,8 +36,10 @@ internal class ItemService : IItemService
         {
             Code = dictionaryItem.First().Key,
             Value = dictionaryItem.First().Value,
-        }).ToList();
+        })
+            .OrderBy(i => i.Code)
+            .ToList();
 
-        await _itemRepository.FetchData(itemEntities);
+        await _itemRepository.OverwriteData(itemEntities);
     }
 }

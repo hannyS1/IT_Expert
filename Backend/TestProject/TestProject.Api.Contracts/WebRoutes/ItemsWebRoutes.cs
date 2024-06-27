@@ -2,9 +2,9 @@
 
 public static class ItemsWebRoutes
 {
-    public const string BasePath = "items";
+    public const string BasePath = "api/items";
 
     public const string GetByFilter = "get-by-filter";
 
-    public const string FetchData = "fetch-data";
+    public const string OverwriteData = "overwrite-data";
 }

@@ -5,6 +5,8 @@ using TestProject.Database.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables();
+
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -21,9 +23,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(app.Configuration
-    .GetSection("CorsSettings:PolicyName")
-    .Get<string>());
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors(x => x
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .SetIsOriginAllowed(origin => true)
+        .AllowCredentials()); 
+}
 
 app.UseHttpsRedirection();
 app.MapControllers();

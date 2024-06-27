@@ -23,9 +23,9 @@ public class ItemsController
         return _itemService.GetByFilterAsync(filter);
     }
 
-    [HttpPost(ItemsWebRoutes.FetchData)]
-    public Task FetchData([FromBody] IEnumerable<Dictionary<int, string>> data)
+    [HttpPost(ItemsWebRoutes.OverwriteData)]
+    public Task Overwrite([FromBody] IEnumerable<Dictionary<int, string>> data)
     {
-        return _itemService.FetchData(data);
+        return _itemService.OverwriteData(data);
     }
 }

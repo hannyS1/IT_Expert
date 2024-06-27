@@ -9,3 +9,23 @@
       POSTGRES_PASSWORD: db_pwd
     volumes:
       - ./postgres/db:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: Backend/TestProject
+      dockerfile: Dockerfile
+    env_file: Backend/TestProject/.env.example
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  
+  frontend:
+    build:
+      context: Frontend
+      dockerfile: DockerFile
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - db
+      - backend

@@ -37,7 +37,7 @@ internal class ItemRepository : IItemRepository
         return await connection.QueryAsync<Item>(queryBuilder.ToString(), parameters);
     }
 
-    public async Task FetchData(IEnumerable<Item> items)
+    public async Task OverwriteData(IEnumerable<Item> items)
     {
         using var connection = _connectionProvider.GetConnection();
 

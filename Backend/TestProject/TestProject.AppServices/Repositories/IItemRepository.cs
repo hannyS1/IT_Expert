@@ -7,5 +7,5 @@ public interface IItemRepository
 {
     Task<IEnumerable<Item>> GetByFilterAsync(GetItemsQueryFilter filter);
 
-    Task FetchData(IEnumerable<Item> items);
+    Task OverwriteData(IEnumerable<Item> items);
 }
