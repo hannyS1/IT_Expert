@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\TestProject.Api.Contracts\TestProject.Api.Contracts.csproj" />
+      <ProjectReference Include="..\TestProject.AppServices.Contracts\TestProject.AppServices.Contracts.csproj" />
+      <ProjectReference Include="..\TestProject.Database\TestProject.Database.csproj" />
+    </ItemGroup>
+
+
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
+    </ItemGroup>
+
+
+</Project>

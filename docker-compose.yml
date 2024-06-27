@@ -1,0 +1,11 @@
+﻿services:
+  db:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: db_test
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_pwd
+    volumes:
+      - ./postgres/db:/var/lib/postgresql/data
