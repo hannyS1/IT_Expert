@@ -1,5 +1,6 @@
 using TestProject.AppServices;
 using TestProject.AppServices.Infrastructure;
+using TestProject.Database;
 using TestProject.Database.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,8 +21,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(app.Configuration
+    .GetSection("CorsSettings:PolicyName")
+    .Get<string>());
+
 app.UseHttpsRedirection();
 app.MapControllers();
 app.UseRouting();
+
+if (app.Environment.IsDevelopment())
+{
+    Migrator.MigratePostgres(app.Configuration);
+}
 
 app.Run();

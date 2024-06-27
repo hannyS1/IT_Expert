@@ -22,4 +22,10 @@ public class ItemsController
     {
         return _itemService.GetByFilterAsync(filter);
     }
+
+    [HttpPost(ItemsWebRoutes.FetchData)]
+    public Task FetchData([FromBody] IEnumerable<Dictionary<int, string>> data)
+    {
+        return _itemService.FetchData(data);
+    }
 }

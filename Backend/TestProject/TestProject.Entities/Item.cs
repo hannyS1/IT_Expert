@@ -2,7 +2,7 @@
 
 namespace TestProject.Entities;
 
-[Table("item")]
+[Table("items")]
 public class Item
 {
     [Column("id")]

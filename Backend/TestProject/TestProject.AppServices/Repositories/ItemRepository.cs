@@ -20,7 +20,7 @@ internal class ItemRepository : IItemRepository
         using var connection = _connectionProvider.GetConnection();
 
         var parameters = new DynamicParameters();
-        var queryBuilder = new StringBuilder("select * from item where 1=1");
+        var queryBuilder = new StringBuilder("select * from items where 1=1");
 
         if (filter.Code.HasValue)
         {
@@ -35,5 +35,16 @@ internal class ItemRepository : IItemRepository
         }
         
         return await connection.QueryAsync<Item>(queryBuilder.ToString(), parameters);
+    }
+
+    public async Task FetchData(IEnumerable<Item> items)
+    {
+        using var connection = _connectionProvider.GetConnection();
+
+        const string clearTableQuery = "delete from items where 1=1; alter sequence items_id_seq restart with 1";
+        await connection.ExecuteAsync(clearTableQuery);
+        
+        const string insertQuery = "insert into items (code, value) VALUES (@code, @value)";
+        await connection.ExecuteAsync(insertQuery, items);
     }
 }
