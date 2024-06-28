@@ -1,6 +1,6 @@
 import './App.css';
-import ItemInput from "./components/itemInput/ItemInput";
-import ItemList from "./components/ItemLIst/ItemList";
+import ItemInput from "./components/ItemInput/ItemInput";
+import ItemList from "./components/ItemList/ItemList";
 
 function App() {
   return (
